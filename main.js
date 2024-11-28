@@ -3,17 +3,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 
 // Configuração do Firebase usando variáveis de ambiente
-// main.js
-const firebaseConfig = {
-    apiKey: "API_KEY_PLACEHOLDER",
-    authDomain: "AUTH_DOMAIN_PLACEHOLDER",
-    projectId: "PROJECT_ID_PLACEHOLDER",
-    storageBucket: "STORAGE_BUCKET_PLACEHOLDER",
-    messagingSenderId: "MESSAGING_SENDER_ID_PLACEHOLDER",
-    appId: "APP_ID_PLACEHOLDER",
-    measurementId: "MEASUREMENT_ID_PLACEHOLDER",
-    databaseURL: "DATABASE_URL_PLACEHOLDER"
-};
+
+const firebaseConfig = window.FIREBASE_CONFIG;
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
 
 // Inicializando o Firebase
 const app = initializeApp(firebaseConfig);
