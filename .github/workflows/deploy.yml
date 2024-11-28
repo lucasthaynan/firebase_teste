@@ -12,9 +12,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
+      - name: List files in the repository  # Passo para depuração
+        run: ls -R  # Isso irá listar todos os arquivos no repositório
+
       - name: Replace placeholders in main.js
         run: |
-          # Substituir os placeholders pelas variáveis de ambiente
           sed -i "s|API_KEY_PLACEHOLDER|${{ secrets.FIREBASE_API_KEY }}|g" ./main.js
           sed -i "s|AUTH_DOMAIN_PLACEHOLDER|${{ secrets.FIREBASE_AUTH_DOMAIN }}|g" ./main.js
           sed -i "s|PROJECT_ID_PLACEHOLDER|${{ secrets.FIREBASE_PROJECT_ID }}|g" ./main.js
@@ -24,12 +26,14 @@ jobs:
           sed -i "s|MEASUREMENT_ID_PLACEHOLDER|${{ secrets.FIREBASE_MEASUREMENT_ID }}|g" ./main.js
           sed -i "s|DATABASE_URL_PLACEHOLDER|${{ secrets.FIREBASE_DATABASE_URL }}|g" ./main.js
 
-      - name: Build your project (if needed)
+      - name: Install dependencies
         run: |
-          # Com seu código já com as variáveis injetadas, você pode rodar o build aqui
+          npm install  # Instalar as dependências do npm, se necessário
+
+      - name: Build your project
+        run: |
           npm run build  # ou o comando correspondente ao seu projeto
 
       - name: Deploy (opcional)
         run: |
-          # Opcional, caso você queira fazer o deploy após o build
           firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
