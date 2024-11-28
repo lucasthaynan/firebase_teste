@@ -9,11 +9,6 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 
-// Inicializando o Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-
-
 // Função para carregar e mostrar o último produto inserido
 function loadLastProduct() {
     const productList = document.getElementById("product-list");
