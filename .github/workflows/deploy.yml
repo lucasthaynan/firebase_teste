@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Set Firebase Configuration from GitHub Secrets
+      - name: Set Firebase Configuration from GitHub Secrets 1.1
         run: |
           echo "FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}" >> $GITHUB_ENV
           echo "FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
