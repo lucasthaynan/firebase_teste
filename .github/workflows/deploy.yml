@@ -15,14 +15,14 @@ jobs:
       - name: Replace placeholders in main.js
         run: |
           # Substituir os placeholders pelas variáveis de ambiente
-          sed -i "s|API_KEY_PLACEHOLDER|${{ secrets.FIREBASE_API_KEY }}|g" src/main.js
-          sed -i "s|AUTH_DOMAIN_PLACEHOLDER|${{ secrets.FIREBASE_AUTH_DOMAIN }}|g" src/main.js
-          sed -i "s|PROJECT_ID_PLACEHOLDER|${{ secrets.FIREBASE_PROJECT_ID }}|g" src/main.js
-          sed -i "s|STORAGE_BUCKET_PLACEHOLDER|${{ secrets.FIREBASE_STORAGE_BUCKET }}|g" src/main.js
-          sed -i "s|MESSAGING_SENDER_ID_PLACEHOLDER|${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}|g" src/main.js
-          sed -i "s|APP_ID_PLACEHOLDER|${{ secrets.FIREBASE_APP_ID }}|g" src/main.js
-          sed -i "s|MEASUREMENT_ID_PLACEHOLDER|${{ secrets.FIREBASE_MEASUREMENT_ID }}|g" src/main.js
-          sed -i "s|DATABASE_URL_PLACEHOLDER|${{ secrets.FIREBASE_DATABASE_URL }}|g" src/main.js
+          sed -i "s|API_KEY_PLACEHOLDER|${{ secrets.FIREBASE_API_KEY }}|g" ./main.js
+          sed -i "s|AUTH_DOMAIN_PLACEHOLDER|${{ secrets.FIREBASE_AUTH_DOMAIN }}|g" ./main.js
+          sed -i "s|PROJECT_ID_PLACEHOLDER|${{ secrets.FIREBASE_PROJECT_ID }}|g" ./main.js
+          sed -i "s|STORAGE_BUCKET_PLACEHOLDER|${{ secrets.FIREBASE_STORAGE_BUCKET }}|g" ./main.js
+          sed -i "s|MESSAGING_SENDER_ID_PLACEHOLDER|${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}|g" ./main.js
+          sed -i "s|APP_ID_PLACEHOLDER|${{ secrets.FIREBASE_APP_ID }}|g" ./main.js
+          sed -i "s|MEASUREMENT_ID_PLACEHOLDER|${{ secrets.FIREBASE_MEASUREMENT_ID }}|g" ./main.js
+          sed -i "s|DATABASE_URL_PLACEHOLDER|${{ secrets.FIREBASE_DATABASE_URL }}|g" ./main.js
 
       - name: Build your project (if needed)
         run: |
