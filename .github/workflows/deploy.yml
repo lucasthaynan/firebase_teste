@@ -6,10 +6,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Adiciona permissão de escrita para o GitHub Actions
     steps:
       - uses: actions/checkout@v3
+      
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_branch: gh-pages  # Especifica explicitamente a branch de deploy
+          publish_dir: .  # Diretório a ser publicado
