@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Inject Firebase Secrets into JavaScript
 
 on:
   push:
@@ -6,34 +6,24 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: List files in the repository  # Passo para depuração
-        run: ls -R  # Isso irá listar todos os arquivos no repositório
-
-      - name: Replace placeholders in main.js
+      - name: Set Firebase config environment variables
         run: |
-          sed -i "s|API_KEY_PLACEHOLDER|${{ secrets.FIREBASE_API_KEY }}|g" ./main.js
-          sed -i "s|AUTH_DOMAIN_PLACEHOLDER|${{ secrets.FIREBASE_AUTH_DOMAIN }}|g" ./main.js
-          sed -i "s|PROJECT_ID_PLACEHOLDER|${{ secrets.FIREBASE_PROJECT_ID }}|g" ./main.js
-          sed -i "s|STORAGE_BUCKET_PLACEHOLDER|${{ secrets.FIREBASE_STORAGE_BUCKET }}|g" ./main.js
-          sed -i "s|MESSAGING_SENDER_ID_PLACEHOLDER|${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}|g" ./main.js
-          sed -i "s|APP_ID_PLACEHOLDER|${{ secrets.FIREBASE_APP_ID }}|g" ./main.js
-          sed -i "s|MEASUREMENT_ID_PLACEHOLDER|${{ secrets.FIREBASE_MEASUREMENT_ID }}|g" ./main.js
-          sed -i "s|DATABASE_URL_PLACEHOLDER|${{ secrets.FIREBASE_DATABASE_URL }}|g" ./main.js
+          echo "FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_MEASUREMENT_ID=${{ secrets.FIREBASE_MEASUREMENT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_DATABASE_URL=${{ secrets.FIREBASE_DATABASE_URL }}" >> $GITHUB_ENV
 
-      - name: Install dependencies
+      - name: Deploy or Build (if necessary)
         run: |
-          npm install  # Instalar as dependências do npm, se necessário
-
-      - name: Build your project
-        run: |
-          npm run build  # ou o comando correspondente ao seu projeto
-
-      - name: Deploy (opcional)
-        run: |
-          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+          # Aqui você pode rodar o build ou qualquer outro comando se necessário.
+          # Mas o foco aqui é garantir que as variáveis de ambiente foram setadas corretamente.
