@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>Produtos</h1>
+    
+    <!-- Exibição dos produtos -->
+    <ul id="product-list"></ul>
+
+    <h2>Adicionar Produto</h2>
+    <form id="add-product-form">
+        <input type="text" id="product-id" placeholder="ID do Produto" required>
+        <input type="text" id="product-name" placeholder="Nome do Produto" required>
+        <input type="number" id="product-value" placeholder="Valor do Produto" required>
+        <button type="submit">Adicionar Produto</button>
+    </form>
+
+    <!-- Importando Firebase via módulo -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
