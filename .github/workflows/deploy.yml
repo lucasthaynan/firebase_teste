@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Set Firebase Configuration from GitHub Secrets 1.1
+      - name: Set environment variables from GitHub Secrets
         run: |
           echo "FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}" >> $GITHUB_ENV
           echo "FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
@@ -28,8 +28,5 @@ jobs:
           echo "FIREBASE_MEASUREMENT_ID=${{ secrets.FIREBASE_MEASUREMENT_ID }}" >> $GITHUB_ENV
           echo "FIREBASE_DATABASE_URL=${{ secrets.FIREBASE_DATABASE_URL }}" >> $GITHUB_ENV
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run your build or deploy command
-        run: npm run deploy  # ou o comando de deploy apropriado
+      - name: Run deploy script
+        run: npm run deploy
